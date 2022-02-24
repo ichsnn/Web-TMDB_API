@@ -229,12 +229,7 @@ main {
     }
 }
 
-.detail__bg {
-    background-position: right -200px top;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/4OTYefcAlaShn6TGVK33UxLW9R7.jpg);
-}
+
 
 .bg__layer {
     background: linear-gradient(

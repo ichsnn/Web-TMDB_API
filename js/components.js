@@ -80,9 +80,53 @@ class MovieSection extends HTMLElement {
 customElements.define('movie-section', MovieSection);
 
 class HeroMovieDetails extends HTMLElement {
-    constructor() {
+    constructor(movie) {
+        super();
         this.innerHTML = `
-        
+            <style>
+                .detail__bg {
+                    background-position: right -200px top;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-image: url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${movie.backdrop_path});
+                }
+            </style>
+            <div class="detail__bg">
+                <div class="bg__layer">
+                    <div class="detail__container">
+                        <div class="poster">
+                            <div class="poster__container">
+                                <img src="http://image.tmdb.org/t/p/w500${movie.poster_path}" alt="poster">
+                                <div class="layer" title="Play Trailer">
+                                    <i class="fa-solid fa-play"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="details">
+                            <div class="header">
+                                <div class="header__title">
+                                    <span class="title">${movie.title}</span>
+                                    <span class="year">(2021)</span>
+                                </div>
+                                <div class="header__info">
+                                    13+
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <i class="fa-solid fa-star star"></i>
+                                <span>${movie.vote_average}</span>
+                            </div>
+                            <div class="studio">
+                                <p>Studio</p>
+                            </div>
+                            <div class="overview">
+                                <h3>Overview</h3>
+                                <p>${movie.overview}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         `;
     }
 }
