@@ -7,7 +7,7 @@ class NavigationBar extends HTMLElement {
             <nav>
                 <!-- App Name or Logo -->
                 <a href="index.html" class="nav__logo">
-                    YoMov
+                    YoMovDB
                 </a>
 
                 <!-- Search Bar -->
@@ -130,10 +130,10 @@ class HeroMovieDetails extends HTMLElement {
                                 </div>
                                 <div class="header__info">
                                     ${movie.release_date} ${
-            movie.production_countries.length == 0
-                ? ''
-                : '(' + movie.production_countries[0].iso_3166_1 + ')'
-        } • ${genre} • ${movie.runtime}m
+                                    movie.production_countries.length == 0
+                                        ? ''
+                                        : '(' + movie.production_countries[0].iso_3166_1 + ')'
+                                } • ${genre} • ${movie.runtime}m
                                 </div>
                             </div>
                             <div class="rating">
