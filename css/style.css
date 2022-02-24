@@ -229,8 +229,6 @@ main {
     }
 }
 
-
-
 .bg__layer {
     background: linear-gradient(
         to bottom right,
@@ -292,6 +290,10 @@ main {
     margin-bottom: 5px;
 }
 
+.header__info {
+    font-size: 14px;
+}
+
 .header__title .title {
     font-size: 36px;
     font-weight: bolder;
@@ -302,7 +304,7 @@ main {
     font-weight: 700px;
 }
 
-.details .studio p {
+.details .tagline p {
     font-style: italic;
     font-weight: 400;
     color: #c4c3bf;

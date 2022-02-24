@@ -82,13 +82,26 @@ customElements.define('movie-section', MovieSection);
 class HeroMovieDetails extends HTMLElement {
     constructor(movie) {
         super();
+
+        const date = new Date(movie.release_date);
+
+        let genre = '';
+        for(let i = 0; i < movie.genres.length; i++) {
+            genre += movie.genres[i].name;
+            if(i < movie.genres.length - 1) {
+                genre += ', ';
+            }
+        }
+
         this.innerHTML = `
             <style>
                 .detail__bg {
                     background-position: right -200px top;
                     background-size: cover;
                     background-repeat: no-repeat;
-                    background-image: url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${movie.backdrop_path});
+                    background-image: url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${
+                        movie.backdrop_path
+                    });
                 }
             </style>
             <div class="detail__bg">
@@ -96,7 +109,9 @@ class HeroMovieDetails extends HTMLElement {
                     <div class="detail__container">
                         <div class="poster">
                             <div class="poster__container">
-                                <img src="http://image.tmdb.org/t/p/w500${movie.poster_path}" alt="poster">
+                                <img src="http://image.tmdb.org/t/p/w500${
+                                    movie.poster_path
+                                }" alt="poster">
                                 <div class="layer" title="Play Trailer">
                                     <i class="fa-solid fa-play"></i>
                                 </div>
@@ -106,18 +121,18 @@ class HeroMovieDetails extends HTMLElement {
                             <div class="header">
                                 <div class="header__title">
                                     <span class="title">${movie.title}</span>
-                                    <span class="year">(2021)</span>
+                                    <span class="year">(${date.getFullYear()})</span>
                                 </div>
                                 <div class="header__info">
-                                    13+
+                                    ${date.toLocaleDateString()} (${movie.production_countries[0].iso_3166_1}) • ${genre} • ${movie.runtime}m
                                 </div>
                             </div>
                             <div class="rating">
                                 <i class="fa-solid fa-star star"></i>
                                 <span>${movie.vote_average}</span>
                             </div>
-                            <div class="studio">
-                                <p>Studio</p>
+                            <div class="tagline">
+                                <p>${movie.tagline}</p>
                             </div>
                             <div class="overview">
                                 <h3>Overview</h3>
