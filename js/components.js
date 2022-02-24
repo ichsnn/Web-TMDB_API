@@ -26,7 +26,6 @@ class MovieCard extends HTMLElement {
         super();
         this.setAttribute('class', 'movie__card');
 
-        console.log(movie)
         this.setAttribute('title', movie.title);
 
         this.innerHTML = `
@@ -92,9 +91,9 @@ class HeroMovieDetails extends HTMLElement {
         const date = new Date(movie.release_date);
 
         let genre = '';
-        for(let i = 0; i < movie.genres.length; i++) {
+        for (let i = 0; i < movie.genres.length; i++) {
             genre += movie.genres[i].name;
-            if(i < movie.genres.length - 1) {
+            if (i < movie.genres.length - 1) {
                 genre += ', ';
             }
         }
@@ -130,7 +129,11 @@ class HeroMovieDetails extends HTMLElement {
                                     <span class="year">(${date.getFullYear()})</span>
                                 </div>
                                 <div class="header__info">
-                                    ${date.toLocaleDateString()} ${movie.production_countries.length == 0 ? '' : '(' + movie.production_countries[0].iso_3166_1 + ')'} • ${genre} • ${movie.runtime}m
+                                    ${movie.release_date} ${
+            movie.production_countries.length == 0
+                ? ''
+                : '(' + movie.production_countries[0].iso_3166_1 + ')'
+        } • ${genre} • ${movie.runtime}m
                                 </div>
                             </div>
                             <div class="rating">
@@ -144,6 +147,12 @@ class HeroMovieDetails extends HTMLElement {
                                 <h3>Overview</h3>
                                 <p>${movie.overview}</p>
                             </div>
+                            <div class="mainCrew">
+                                <div class="director">
+                                    <div class="director__name name"></div>
+                                    <div class="job">Director</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -152,3 +161,9 @@ class HeroMovieDetails extends HTMLElement {
     }
 }
 customElements.define('details-hero', HeroMovieDetails);
+
+class MovieCast extends HTMLElement {
+    constructor() {
+
+    }
+}
