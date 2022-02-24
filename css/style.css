@@ -48,6 +48,11 @@ main {
 }
 
 /* Movie Section */
+.movieSection {
+    margin-bottom: 30px;
+    display: block;
+}
+
 .movieSection__head {
     display: flex;
     justify-content: space-between;

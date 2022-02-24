@@ -6,7 +6,9 @@ const URL = (tag) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     const popularSection = document.querySelector('#popular');
+    const topratedSection = document.querySelector('#top_rated');
     showMovies(URL('popular'), popularSection);
+    showMovies(URL('top_rated'), topratedSection);
 });
 
 const showMovies = (URL, container) => {
@@ -16,9 +18,10 @@ const showMovies = (URL, container) => {
             const rating = movie.vote_average;
             const title = movie.title;
             const movieCard = new MovieCard(poster, rating, title);
-            container.appendChild(movieCard)
+            container.appendChild(movieCard);
         });
-        updateContainer();
+        // Update container slider from container grandParent :)
+        updateContainer(container.parentElement.parentElement);
     });
 };
 
