@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const movieDetails = (URL) => {
     getMovies(URL).then((movie) => {
-        window.document.title += ' ' + movie.title;
+        window.document.title += ' - ' + movie.title;
         
     })
 };
