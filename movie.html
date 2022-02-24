@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YoMov</title>
+    <title>YMDB</title>
     <link rel="stylesheet" href="css/style.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -16,11 +16,27 @@
 <body>
     <nav-bar></nav-bar>
 
+    <main>
+        <div class="movieSection__head">
+            <p class="title">
+            </p>
+        </div>
+        <div class="movieSection__container" id="movie-container">
+        </div>
+        <div style="display: flex;">
+            <div class="btn__more">
+                Load More
+            </div>
+        </div>
+    </main>
+
+    <footer></footer>
+
     <script src="js/api-key.js"></script>
     <script src="js/components.js"></script>
     <script src="js/cardScroll.js"></script>
     <script src="js/util.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/movie.js"></script>
 </body>
 
 </html>

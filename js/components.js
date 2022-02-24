@@ -7,7 +7,7 @@ class NavigationBar extends HTMLElement {
             <nav>
                 <!-- App Name or Logo -->
                 <a href="index.html" class="nav__logo">
-                    YoMovDB
+                    YMDB
                 </a>
 
                 <!-- Search Bar -->
@@ -238,3 +238,4 @@ customElements.define('details-hero', HeroMovieDetails);
 class MovieCast extends HTMLElement {
     constructor() {}
 }
+customElements.define('movie-cast', MovieCast)
