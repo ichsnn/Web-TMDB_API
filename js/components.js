@@ -26,15 +26,21 @@ class MovieCard extends HTMLElement {
         super();
         this.setAttribute('class', 'movie__card');
 
+        console.log(movie)
         this.setAttribute('title', movie.title);
 
         this.innerHTML = `
             <img src="https://image.tmdb.org/t/p/w342${movie.poster_path}" alt="${movie.title}"
             class="image">
             <div class="card__details">
-                <div class="rating">
-                    <i class="fa-solid fa-star star"></i>
-                    <span>${movie.vote_average}</span>
+                <div class="info">
+                    <div class="rating">
+                        <i class="fa-solid fa-star star"></i>
+                        <span>${movie.vote_average}</span>
+                    </div>
+                    <div class="releaseDate">
+                        ${movie.release_date}
+                    </div>
                 </div>
                 <div class="title">
                     ${movie.title}
@@ -124,7 +130,7 @@ class HeroMovieDetails extends HTMLElement {
                                     <span class="year">(${date.getFullYear()})</span>
                                 </div>
                                 <div class="header__info">
-                                    ${date.toLocaleDateString()} (${movie.production_countries[0].iso_3166_1}) • ${genre} • ${movie.runtime}m
+                                    ${date.toLocaleDateString()} ${movie.production_countries.length == 0 ? '' : '(' + movie.production_countries[0].iso_3166_1 + ')'} • ${genre} • ${movie.runtime}m
                                 </div>
                             </div>
                             <div class="rating">

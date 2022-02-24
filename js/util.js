@@ -1,5 +1,5 @@
 const URL = (tag) => {
-    return `https://api.themoviedb.org/3/movie/${tag}?api_key=${API_KEY}&page1`;
+    return `https://api.themoviedb.org/3/movie/${tag}?api_key=${API_KEY}`;
 };
 
 const getMovies = async (URL) => {

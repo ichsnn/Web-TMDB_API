@@ -136,11 +136,21 @@ main {
 }
 
 .card__details .rating {
-    margin-bottom: 10px;
     display: flex;
     align-items: center;
     font-size: 14px;
     gap: 3px;
+}
+
+.card__details .info {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card__details .info .releaseDate {
+    font-size: 14px;
 }
 
 .card__details .rating .star {
@@ -251,6 +261,7 @@ main {
 }
 
 .detail__container .poster img {
+    display: block;
     width: 300px;
 }
 
@@ -283,7 +294,7 @@ main {
 .details {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
 .header__title {
