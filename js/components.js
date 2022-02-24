@@ -153,6 +153,79 @@ class HeroMovieDetails extends HTMLElement {
                                     <div class="job">Director</div>
                                 </div>
                             </div>
+                            <div class="more__details">
+                                <div class="details">
+                                    <div id="original-title" class="detail__item">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-heading"></i>
+                                        </div>
+                                        <div>
+                                            <div class=" detail__title">
+                                                Original Title
+                                            </div>
+                                            <div class="value">
+                                                ${movie.original_title}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="status" class="detail__item">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-flag"></i>
+                                        </div>
+                                        <div>
+                                            <div class="detail__title">
+                                                Status
+                                            </div>
+                                            <div class="value">
+                                                ${movie.status}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="original-languange" class="detail__item">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-globe"></i>
+                                        </div>
+                                        <div>
+                                            <div class="detail__title">
+                                                Original Languange
+                                            </div>
+                                            <div class="value">
+                                                ${movie.original_language}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="budget" class="detail__item">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-coins"></i>
+                                        </div>
+                                        <div>
+                                            <div class=" detail__title">
+                                                Budget
+                                            </div>
+                                            <div class="value">
+                                                $${movie.budget.toLocaleString('en-US', {
+                                                    valute: 'USD',
+                                                  })}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="revenue" class="detail__item">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-chart-line"></i>
+                                        </div>
+                                        <div>
+                                            <div class="detail__title">
+                                                Revenue
+                                            </div>
+                                            <div class="value">
+                                                $${movie.revenue.toLocaleString('en-US', {
+                                                    valute: 'USD',
+                                                  })}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -163,7 +236,5 @@ class HeroMovieDetails extends HTMLElement {
 customElements.define('details-hero', HeroMovieDetails);
 
 class MovieCast extends HTMLElement {
-    constructor() {
-
-    }
+    constructor() {}
 }

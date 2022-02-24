@@ -16,6 +16,7 @@ if (movieID != null) {
 // ---------------
 const movieDetails = (URL, CREDIT_URL, container) => {
     getMovies(URL).then((movie) => {
+        console.log(movie)
         window.document.title += ' - ' + movie.title;
         const detailsHero = new HeroMovieDetails(movie);
         container.appendChild(detailsHero);
