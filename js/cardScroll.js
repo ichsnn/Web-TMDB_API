@@ -36,9 +36,6 @@ const updateContainer = () => {
 
         next.addEventListener('click', () => {
             movieCards.scrollLeft += iterator;
-            console.log(
-                Math.ceil(movieCards.offsetWidth + movieCards.scrollLeft)
-            );
 
             // Check scroll offset for next
             if (

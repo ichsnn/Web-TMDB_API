@@ -39,7 +39,7 @@ nav {
 
 main {
     max-width: 1280px;
-    padding: 10px 20px;
+    padding: 30px 20px 10px 20px;
     margin: auto;
 }
 
@@ -53,7 +53,7 @@ main {
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
 }
 
 .movieSection__head .more__link {

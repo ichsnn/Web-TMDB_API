@@ -12,9 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
 const showMovies = (URL, container) => {
     getMovies(URL).then((results) => {
         results.forEach((movie) => {
-            container.innerHTML += `
-                <movie-card class="movie__card" image="${movie.poster_path}" rating="${movie.vote_average}" title="${movie.title}"></movie_card>
-            `;
+            const poster = movie.poster_path;
+            const rating = movie.vote_average;
+            const title = movie.title;
+            const movieCard = new MovieCard(poster, rating, title);
+            container.appendChild(movieCard)
         });
         updateContainer();
     });
