@@ -1,22 +1,25 @@
 class MovieCard extends HTMLElement {
-    constructor(img, rating, title) {
+    constructor(movie) {
         super();
-        this.img = img;
-        this.rating = rating;
-        this.title = title;
         this.setAttribute('class', 'movie__card');
+
+        this.setAttribute('title', movie.title);
+
         this.innerHTML = `
-            <img src="https://image.tmdb.org/t/p/w342/${this.img}" alt="${this.title}"
+            <img src="https://image.tmdb.org/t/p/w342${movie.poster_path}" alt="${movie.title}"
             class="image">
             <div class="card__details">
                 <div class="rating">
                     <i class="fa-solid fa-star star"></i>
-                    <span>${this.rating}</span>
+                    <span>${movie.vote_average}</span>
                 </div>
                 <div class="title">
-                    ${this.title}
+                    ${movie.title}
                 </div>
             </div>
+            <a href="./detail.html?id=${movie.id}" class="to__detail">
+                
+            </a>
         `;
     }
 }
@@ -37,7 +40,7 @@ class MovieSection extends HTMLElement {
                     ${this.title}
                 </p>
                 <a href="${this.moreLink}" class="more__link">
-                    Find More >
+                    <span>FIND MORE</span> <i class="fa-solid fa-angle-right"></i>
                 </a>
             </div>
             <div class="movie__container">

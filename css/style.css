@@ -62,9 +62,14 @@ main {
 }
 
 .movieSection__head .more__link {
-    font-size: 18px;
-    font-weight: 900;
-    color: #e7e274;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    color: #e7e274 !important;
+}
+.movieSection__head .more__link span,
+.movieSection__head .more__link i {
+    color: #e7e274 !important;
 }
 
 .movieSection__head .title {
@@ -100,7 +105,7 @@ main {
     -ms-overflow-style: none;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory; 
+    scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
 }
 
@@ -144,7 +149,7 @@ main {
 
 .card__details .title {
     font-size: 16px;
-    text-align: center;
+    text-align: left;
     display: -webkit-box;
     max-height: 50px;
     -webkit-line-clamp: 2;
@@ -153,6 +158,21 @@ main {
     text-overflow: ellipsis;
     line-height: 1.625;
 }
+
+.movie__card:hover > .to__detail {
+    display: flex;
+}
+
+.movie__card .to__detail {
+    background-color: rgba(0, 0, 0, 0.493);
+    position: absolute;
+    top: 0;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
 /* !Movie Card */
 
 .movie__container .scroll__button {
@@ -162,7 +182,8 @@ main {
     height: 100%;
 }
 
-.movie__container .scroll__button .prev, .movie__container .scroll__button .next {
+.movie__container .scroll__button .prev,
+.movie__container .scroll__button .next {
     height: 50%;
     display: flex;
     align-items: center;
