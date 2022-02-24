@@ -207,3 +207,124 @@ main {
 .hide {
     display: none !important;
 }
+
+/* Detail Page */
+#detailSection {
+    padding: 0;
+    max-width: none;
+}
+
+.detail__container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    max-width: 1280px;
+    margin: auto;
+    padding: 20px 40px;
+}
+
+@media screen and (max-width: 768px) {
+    .detail__container {
+        flex-direction: column;
+    }
+}
+
+.detail__bg {
+    background-position: right -200px top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/4OTYefcAlaShn6TGVK33UxLW9R7.jpg);
+}
+
+.bg__layer {
+    background: linear-gradient(
+        to bottom right,
+        rgb(11, 48, 51),
+        rgba(10.5, 31.5, 52.5, 0.84)
+    );
+}
+
+.detail__container .poster {
+    position: relative;
+    display: block;
+    width: 300px;
+}
+
+.poster__container {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.detail__container .poster img {
+    width: 300px;
+}
+
+.detail__container .poster .layer {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.452);
+    border: none;
+    top: 0;
+    left: 0;
+}
+
+.detail__container .poster .layer i {
+    font-size: 42px;
+    color: #eeedde;
+}
+
+.detail__container .poster__container:hover > img {
+    filter: blur(10px);
+}
+
+.detail__container .poster__container:hover > .layer {
+    display: flex;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.header__title {
+    margin-bottom: 5px;
+}
+
+.header__title .title {
+    font-size: 36px;
+    font-weight: bolder;
+}
+
+.header__title .year {
+    font-size: 30px;
+    font-weight: 700px;
+}
+
+.details .studio p {
+    font-style: italic;
+    font-weight: 400;
+    color: #c4c3bf;
+}
+
+.details .rating i {
+    color: #f5c518;
+}
+
+.details .rating span {
+    font-weight: bold;
+}
+
+.overview h3 {
+    margin-bottom: 12px;
+}
+
+.overview p {
+    line-height: 1.5em;
+}

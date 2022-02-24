@@ -1,3 +1,26 @@
+class NavigationBar extends HTMLElement {
+    constructor() {
+        super();
+
+        this.innerHTML = `
+        <header>
+            <nav>
+                <!-- App Name or Logo -->
+                <a href="index.html" class="nav__logo">
+                    YoMov
+                </a>
+
+                <!-- Search Bar -->
+                <div>
+
+                </div>
+            </nav>
+        </header>
+        `;
+    }
+}
+customElements.define('nav-bar', NavigationBar);
+
 class MovieCard extends HTMLElement {
     constructor(movie) {
         super();
@@ -55,3 +78,12 @@ class MovieSection extends HTMLElement {
     }
 }
 customElements.define('movie-section', MovieSection);
+
+class HeroMovieDetails extends HTMLElement {
+    constructor() {
+        this.innerHTML = `
+        
+        `;
+    }
+}
+customElements.define('details-hero', HeroMovieDetails);

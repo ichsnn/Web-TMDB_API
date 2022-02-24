@@ -1,15 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YoMov</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
+    <nav-bar></nav-bar>
+    <main id="detailSection">
+        <div class="detail__bg">
+            <div class="bg__layer">
+                <div class="detail__container">
+                    <div class="poster">
+                        <div class="poster__container">
+                            <img src="http://image.tmdb.org/t/p/w500/4j0PNHkMr5ax3IA8tjtxcmPU3QT.jpg" alt="poster">
+                            <div class="layer" title="Play Trailer">
+                                <i class="fa-solid fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <div class="header">
+                            <div class="header__title">
+                                <span class="title">Encanto</span>
+                                <span class="year">(2021)</span>
+                            </div>
+                            <div class="header__info">
+                                13+
+                            </div>
+                        </div>
+                        <div class="rating">
+                            <i class="fa-solid fa-star star"></i>
+                            <span>10</span>
+                        </div>
+                        <div class="studio">
+                            <p>Studio</p>
+                        </div>
+                        <div class="overview">
+                            <h3>Overview</h3>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum error non nemo
+                                temporibus exercitationem adipisci illo vel nam, at accusantium eligendi fuga animi quod
+                                quasi quibusdam in voluptate tempora unde.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+    <script src="js/components.js"></script>
     <script src="js/api-key.js"></script>
     <script src="js/util.js"></script>
     <script src="js/detail.js"></script>
 </body>
+
 </html>

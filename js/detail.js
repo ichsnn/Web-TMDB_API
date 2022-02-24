@@ -1,13 +1,17 @@
 const params = new URLSearchParams(window.location.search);
+
 const movieID = params.get('id');
 
-document.addEventListener('DOMContentLoaded', () => {
-    movieDetails(URL(movieID))
-});
+if (movieID != null) {
+    document.addEventListener('DOMContentLoaded', () => {
+        movieDetails(URL(movieID));
+    });
 
-const movieDetails = (URL) => {
-    getMovies(URL).then((movie) => {
-        window.document.title += ' - ' + movie.title;
-        
-    })
-};
+    const movieDetails = (URL, container) => {
+        getMovies(URL).then((movie) => {
+            console.log(movie)
+            window.document.title += ' - ' + movie.title;
+            
+        });
+    };
+}

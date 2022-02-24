@@ -10,9 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const showMovies = (URL, container) => {
     getMovies(URL).then((data) => {
         data.results.forEach((movie) => {
-            console.log(movie)
             const movieCard = new MovieCard(movie);
-            console.log(movieCard)
             container.appendChild(movieCard);
         });
         updateContainer(container.parentElement.parentElement);
