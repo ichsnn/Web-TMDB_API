@@ -130,10 +130,10 @@ class HeroMovieDetails extends HTMLElement {
                                 </div>
                                 <div class="header__info">
                                     ${movie.release_date} ${
-                                    movie.production_countries.length == 0
-                                        ? ''
-                                        : '(' + movie.production_countries[0].iso_3166_1 + ')'
-                                } • ${genre} • ${movie.runtime}m
+            movie.production_countries.length == 0
+                ? ''
+                : '(' + movie.production_countries[0].iso_3166_1 + ')'
+        } • ${genre} • ${movie.runtime}m
                                 </div>
                             </div>
                             <div class="rating">
@@ -155,75 +155,11 @@ class HeroMovieDetails extends HTMLElement {
                             </div>
                             <div class="more__details">
                                 <div class="details">
-                                    <div id="original-title" class="detail__item">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-heading"></i>
-                                        </div>
-                                        <div>
-                                            <div class=" detail__title">
-                                                Original Title
-                                            </div>
-                                            <div class="value">
-                                                ${movie.original_title}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="status" class="detail__item">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-flag"></i>
-                                        </div>
-                                        <div>
-                                            <div class="detail__title">
-                                                Status
-                                            </div>
-                                            <div class="value">
-                                                ${movie.status}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="original-languange" class="detail__item">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-globe"></i>
-                                        </div>
-                                        <div>
-                                            <div class="detail__title">
-                                                Original Languange
-                                            </div>
-                                            <div class="value">
-                                                ${movie.original_language}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="budget" class="detail__item">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-coins"></i>
-                                        </div>
-                                        <div>
-                                            <div class=" detail__title">
-                                                Budget
-                                            </div>
-                                            <div class="value">
-                                                $${movie.budget.toLocaleString('en-US', {
-                                                    valute: 'USD',
-                                                  })}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="revenue" class="detail__item">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-chart-line"></i>
-                                        </div>
-                                        <div>
-                                            <div class="detail__title">
-                                                Revenue
-                                            </div>
-                                            <div class="value">
-                                                $${movie.revenue.toLocaleString('en-US', {
-                                                    valute: 'USD',
-                                                  })}
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <more-details detail-iconClass="fa-solid fa-heading" detail-title="Original Title" detail-value="${movie.original_title}"></more-details>
+                                    <more-details detail-iconClass="fa-solid fa-flag" detail-title="Status" detail-value="${movie.status}"></more-details>
+                                    <more-details detail-iconClass="fa-solid fa-globe" detail-title="Original Languange" detail-value="${movie.original_language}"></more-details>
+                                    <more-details detail-iconClass="fa-solid fa-coins" detail-title="Budget" detail-value="$${movie.budget.toLocaleString('en-US',{valute: 'USD',})}"></more-details>
+                                    <more-details detail-iconClass="fa-solid fa-chart-line" detail-title="Revenue" detail-value="$${movie.revenue.toLocaleString('en-US',{valute: 'USD',})}"></more-details>
                                 </div>
                             </div>
                         </div>
@@ -235,7 +171,47 @@ class HeroMovieDetails extends HTMLElement {
 }
 customElements.define('details-hero', HeroMovieDetails);
 
+class MoreDetails extends HTMLElement {
+    constructor() {
+        super();
+        this.className = 'detail__item';
+        const iconClass = this.getAttribute('detail-iconClass');
+        const title = this.getAttribute('detail-title');
+        const value = this.getAttribute('detail-value');
+
+        this.innerHTML = `
+            <div class="icon">
+                <i class="${iconClass}"></i>
+            </div>
+            <div>
+                <div class=" detail__title">
+                    ${title}
+                </div>
+                <div class="value">
+                    ${value}
+                </div>
+            </div>
+        `;
+    }
+}
+customElements.define('more-details', MoreDetails);
+
 class MovieCast extends HTMLElement {
     constructor() {}
 }
-customElements.define('movie-cast', MovieCast)
+customElements.define('movie-cast', MovieCast);
+
+class MyFooter extends HTMLElement {
+    constructor() {
+        super();
+
+        this.setAttribute('class', 'footer');
+
+        this.innerHTML = `
+            <footer>
+                Created By - Ichsan Nulmuhlis
+            </footer>
+        `;
+    }
+}
+customElements.define('my-footer', MyFooter);
