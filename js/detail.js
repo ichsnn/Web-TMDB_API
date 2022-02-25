@@ -2,14 +2,7 @@ const params = new URLSearchParams(window.location.search);
 
 const movieID = params.get('id');
 
-const CREADIT_URL = (movieID) => {
-    return `https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=${API_KEY}`;
-};
-
-const REVIEW_URL = (movieID) => {
-    return `https://api.themoviedb.org/3/movie/${movieID}/reviews?api_key=${API_KEY}`;
-};
-
+// Eksekusi Disini
 if (movieID != null) {
     document.addEventListener('DOMContentLoaded', () => {
         const detailSection = document.getElementById('detailSection');
@@ -17,7 +10,7 @@ if (movieID != null) {
     });
 }
 
-// ---------------
+// Controll
 const movieDetails = (URL, CREDIT_URL, container) => {
     // movie detail
     getMovies(URL).then((movie) => {
@@ -47,7 +40,6 @@ const movieDetails = (URL, CREDIT_URL, container) => {
 
     movieReview(REVIEW_URL(movieID)).then((review) => {
         const reviewContainer = document.querySelector('.review__box');
-        console.log(review);
         if (review.length < 1) {
             reviewContainer.innerHTML = '<div>No Review Yet!</div>';
         } else {
@@ -64,6 +56,22 @@ const movieDetails = (URL, CREDIT_URL, container) => {
     });
 };
 
+// Method lain
+
+const CREADIT_URL = (movieID) => {
+    return `https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=${API_KEY}`;
+};
+
+const REVIEW_URL = (movieID) => {
+    return `https://api.themoviedb.org/3/movie/${movieID}/reviews?api_key=${API_KEY}`;
+};
+
+const RECOM_URL = (movieID) => {
+    return `https://api.themoviedb.org/3/movie/${movieID}/recommendations?api_key=${API_KEY}`
+}
+
+// ---------------
+
 const movieCredits = (URL) => {
     return getMovies(URL).then((credit) => credit);
 };
@@ -74,7 +82,7 @@ const movieReview = (URL) => {
 
 const movieRecomendation = (URL) => {
     return getMovies(URL).then((review) => review.results);
-}
+};
 
 const getJob = (arr, job) => {
     for (let i = 0; i < arr.length; i++) {
