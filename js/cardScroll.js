@@ -15,6 +15,7 @@ const updateContainer = (root) => {
 
     let iterator = Math.floor(containerWidth / cards.item(0).clientWidth) * 200;
 
+    // Update containerWidth & iterator if window resize
     window.addEventListener('resize', () => {
         containerWidth = movieContainer.clientWidth;
         iterator = Math.floor(containerWidth / cards.item(0).clientWidth) * 200;
