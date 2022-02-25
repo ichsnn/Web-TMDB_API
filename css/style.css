@@ -154,6 +154,13 @@ main {
     scroll-snap-align: center;
 }
 
+@media screen and (max-width: 479px) {
+    .movie__card {
+        min-width: 145px;
+        max-width: 145px;
+    }
+}
+
 .movie__card .image {
     height: auto;
 }

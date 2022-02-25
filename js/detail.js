@@ -72,6 +72,10 @@ const movieReview = (URL) => {
     return getMovies(URL).then((review) => review.results);
 };
 
+const movieRecomendation = (URL) => {
+    return getMovies(URL).then((review) => review.results);
+}
+
 const getJob = (arr, job) => {
     for (let i = 0; i < arr.length; i++) {
         if (arr[i].job === job) {
