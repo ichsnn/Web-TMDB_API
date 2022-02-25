@@ -123,7 +123,7 @@ class HeroMovieDetails extends HTMLElement {
                             </div>
                         </div>
                         <div class="details">
-                            <div class="header">
+                            <div class="details__header">
                                 <div class="header__title">
                                     <span class="title">${movie.title}</span>
                                     <span class="year">(${date.getFullYear()})</span>
@@ -155,11 +155,23 @@ class HeroMovieDetails extends HTMLElement {
                             </div>
                             <div class="more__details">
                                 <div class="details">
-                                    <more-details detail-iconClass="fa-solid fa-heading" detail-title="Original Title" detail-value="${movie.original_title}"></more-details>
-                                    <more-details detail-iconClass="fa-solid fa-flag" detail-title="Status" detail-value="${movie.status}"></more-details>
-                                    <more-details detail-iconClass="fa-solid fa-globe" detail-title="Original Languange" detail-value="${movie.original_language}"></more-details>
-                                    <more-details detail-iconClass="fa-solid fa-coins" detail-title="Budget" detail-value="$${movie.budget.toLocaleString('en-US',{valute: 'USD',})}"></more-details>
-                                    <more-details detail-iconClass="fa-solid fa-chart-line" detail-title="Revenue" detail-value="$${movie.revenue.toLocaleString('en-US',{valute: 'USD',})}"></more-details>
+                                    <more-details detail-iconClass="fa-solid fa-heading" detail-title="Original Title" detail-value="${
+                                        movie.original_title
+                                    }"></more-details>
+                                    <more-details detail-iconClass="fa-solid fa-flag" detail-title="Status" detail-value="${
+                                        movie.status
+                                    }"></more-details>
+                                    <more-details detail-iconClass="fa-solid fa-globe" detail-title="Original Languange" detail-value="${
+                                        movie.original_language
+                                    }"></more-details>
+                                    <more-details detail-iconClass="fa-solid fa-coins" detail-title="Budget" detail-value="$${movie.budget.toLocaleString(
+                                        'en-US',
+                                        { valute: 'USD' }
+                                    )}"></more-details>
+                                    <more-details detail-iconClass="fa-solid fa-chart-line" detail-title="Revenue" detail-value="$${movie.revenue.toLocaleString(
+                                        'en-US',
+                                        { valute: 'USD' }
+                                    )}"></more-details>
                                 </div>
                             </div>
                         </div>
@@ -196,10 +208,59 @@ class MoreDetails extends HTMLElement {
 }
 customElements.define('more-details', MoreDetails);
 
-class MovieCast extends HTMLElement {
-    constructor() {}
+class MovieCastCard extends HTMLElement {
+    constructor(img, name, job) {
+        super();
+        this.setAttribute('class', 'cast__card');
+        this.innerHTML = `
+            <img src="https://www.themoviedb.org/t/p/w276_and_h350_face/${img}"
+                alt="cast" class="cast__img">
+            <div class="cast__info">
+                <div class="cast__name">
+                    ${name}
+                </div>
+                <div class="cast__job">
+                    ${job}
+                </div>
+            </div>
+        `;
+    }
 }
-customElements.define('movie-cast', MovieCast);
+customElements.define('cast-card', MovieCastCard);
+
+class ReviewCard extends HTMLElement {
+    constructor(review) {
+        super();
+
+        this.setAttribute('class', 'review__container');
+
+        const avatar =
+            review.author_details.avatar_path == undefined
+                ? 'assets/image/blank-avatar.png'
+                : review.author_details.avatar_path.substring(1);
+
+        const rating = review.author_details.rating;                
+
+        this.innerHTML = `
+        
+            <div class="review__detail">
+                <div class="review__user">
+                    <div>
+                        ${review.author}
+                    </div>
+                    <div class="rating__label">
+                        <i class="fa-solid fa-star star"></i>
+                        ${rating == null ? "none" : rating}
+                    </div>
+                </div>
+                <div class="review__content">
+                    ${review.content}
+                </div>
+            </div>
+        `;
+    }
+}
+customElements.define('review-card', ReviewCard);
 
 class MyFooter extends HTMLElement {
     constructor() {
@@ -209,7 +270,7 @@ class MyFooter extends HTMLElement {
 
         this.innerHTML = `
             <footer>
-                Created By - Ichsan Nulmuhlis
+                Ichsan Nulmuhlis - 2022
             </footer>
         `;
     }
