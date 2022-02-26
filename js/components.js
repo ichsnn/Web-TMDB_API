@@ -15,9 +15,9 @@ class NavigationBar extends HTMLElement {
                 <div class="nav__rightGroup__large">
                     <div class="nav__menu">
                         <div class="nav__item">
-                            <a href="/index.html" class="item__menu">Home</a>
-                            <a href="/movie.html" class="item__menu">Movies</a>
-                            <a href="/category.html" class="item__menu">Category</a>
+                            <a href="index.html" class="item__menu">Home</a>
+                            <a href="movie.html" class="item__menu">Movies</a>
+                            <a href="category.html" class="item__menu">Category</a>
                         </div>
                     </div>
                     <form action="/movie.html" class="search__form">
@@ -46,9 +46,9 @@ class NavigationBar extends HTMLElement {
                             </form>
                         </div>
                         <div class="nav__item">
-                            <a href="/index.html" class="item__menu">Home</a>
-                            <a href="/movie.html" class="item__menu">Movies</a>
-                            <a href="/category.html" class="item__menu">Category</a>
+                            <a href="index.html" class="item__menu">Home</a>
+                            <a href="movie.html" class="item__menu">Movies</a>
+                            <a href="category.html" class="item__menu">Category</a>
                         </div>
                     </div>
                 </div>
