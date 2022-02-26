@@ -27,7 +27,6 @@ class MovieCard extends HTMLElement {
         this.setAttribute('class', 'movie__card');
 
         this.setAttribute('title', movie.title);
-
         this.innerHTML = `
             <img src="https://image.tmdb.org/t/p/w342${movie.poster_path}" alt="${movie.title}"
             class="image">
@@ -35,7 +34,7 @@ class MovieCard extends HTMLElement {
                 <div class="info">
                     <div class="rating">
                         <i class="fa-solid fa-star star"></i>
-                        <span>${movie.vote_average}</span>
+                        <span>${movie.vote_average.toFixed(1)}</span>
                     </div>
                     <div class="releaseDate">
                         ${movie.release_date}

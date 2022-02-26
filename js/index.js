@@ -2,9 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const popularSection = document.querySelector('#popular');
     const topratedSection = document.querySelector('#top_rated');
     const upcomingSection = document.querySelector('#upcoming');
-    showMovies(URL('popular'), popularSection);
-    showMovies(URL('top_rated'), topratedSection);
-    showMovies(URL('upcoming'), upcomingSection);
+    showMovies(MOVIE_URL('popular'), popularSection);
+    showMovies(MOVIE_URL('top_rated'), topratedSection);
+    showMovies(MOVIE_URL('upcoming'), upcomingSection);
 });
 
 const showMovies = (URL, container) => {

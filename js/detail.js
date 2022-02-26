@@ -9,7 +9,7 @@ if (movieID != null) {
     document.addEventListener('DOMContentLoaded', () => {
         const detailSection = document.getElementById('detailSection');
         Promise.resolve()
-            .then(movieDetails(URL(movieID), detailSection))
+            .then(movieDetails(MOVIE_URL(movieID), detailSection))
             .then(movieCredits(CREADIT_URL(movieID), detailSection))
             .then(movieReview(REVIEW_URL(movieID)))
             .then(movieRecomendation(RECOM_URL(movieID)));
@@ -29,8 +29,6 @@ const REVIEW_URL = (movieID) => {
 const RECOM_URL = (movieID) => {
     return `https://api.themoviedb.org/3/movie/${movieID}/recommendations?api_key=${API_KEY}`;
 };
-
-// ---------------
 
 const movieDetails = (URL, container) => {
     getMovies(URL).then((movie) => {
@@ -94,17 +92,33 @@ const movieRecomendation = (URL) => {
     getMovies(URL)
         .then((review) => review.results)
         .then((movie) => {
-            let i = 0;
-            movie.every((recom) => {
-                console.log(recom.title);
-                if (i > 9) {
-                    return false;
-                }
-                return true;
-            });
+            if (movie.length != 0) {
+                displayRecom(movie)
+            } else {
+                getMovies(MOVIE_URL('now_playing'))
+                    .then((movie) => movie.results)
+                    .then((results) => {
+                        displayRecom(results)
+                    });
+            }
         });
 };
 
+const displayRecom = (func) => {
+    const recomContainer = document.querySelector('.recom__container');
+    let i = 0;
+    func.every((recom) => {
+        const movieCard = new MovieCard(recom);
+        recomContainer.appendChild(movieCard)
+        i++;
+        if (i == 4) {
+            return false;
+        }
+        return true;
+    });
+};
+
+// Pencarian job crew
 const getJob = (arr, job) => {
     for (let i = 0; i < arr.length; i++) {
         if (arr[i].job === job) {

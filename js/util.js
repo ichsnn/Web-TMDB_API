@@ -1,4 +1,4 @@
-const URL = (tag) => {
+const MOVIE_URL = (tag) => {
     return `https://api.themoviedb.org/3/movie/${tag}?api_key=${API_KEY}`;
 };
 

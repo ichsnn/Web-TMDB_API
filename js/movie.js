@@ -4,7 +4,7 @@ const tag = params.keys().next().value;
 
 let page = 1;
 
-const MOVIE_URL = (tag, page) => {
+const MOVIES_URL = (tag, page) => {
     return `https://api.themoviedb.org/3/movie/${tag}?api_key=${API_KEY}&language=en-US&page=${page}`;
 };
 
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const showMovies = (container) => {
-    getMovies(MOVIE_URL(tag, page))
+    getMovies(MOVIES_URL(tag, page))
         .then((data) => data.results)
         .then((movies) => {
             movies.forEach((movie) => {
