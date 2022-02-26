@@ -6,17 +6,71 @@ class NavigationBar extends HTMLElement {
         <header>
             <nav>
                 <!-- App Name or Logo -->
-                <a href="index.html" class="nav__logo">
-                    YMDB
-                </a>
-
-                <!-- Search Bar -->
-                <div>
-
+                <div class="nav__leftGroup">
+                    <a href="index.html" class="nav__logo">
+                        YMDB
+                    </a>
+                </div>
+                 <!-- Search Button -->
+                <div class="nav__rightGroup__large">
+                    <div class="nav__menu">
+                        <div class="nav__item">
+                            <a href="/index.html" class="item__menu">Home</a>
+                            <a href="/movie.html" class="item__menu">Movies</a>
+                            <a href="/category.html" class="item__menu">Category</a>
+                        </div>
+                    </div>
+                    <form action="/movie.html" class="search__form">
+                        <input type="text" placeholder="Search Movies..." name="search">
+                        <button type="submit" class="button__search item__menu">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="nav__rightGroup__small">
+                    <div class="button__menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                </div>
+                <div class="menu__small">
+                    <div class="menu__wrap">
+                        <div class="button__menuClose">
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                        <div class="search">
+                            <form action="/movie.html" class="search__form">
+                                <input type="text" placeholder="Search Movies..." name="search">
+                                <button type="submit" class="button__search item__menu">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="nav__item">
+                            <a href="/index.html" class="item__menu">Home</a>
+                            <a href="/movie.html" class="item__menu">Movies</a>
+                            <a href="/category.html" class="item__menu">Category</a>
+                        </div>
+                    </div>
                 </div>
             </nav>
         </header>
         `;
+    }
+
+    connectedCallback() {
+        const menuBtn = document.querySelector('.button__menu');
+
+        const menuBox = document.querySelector('.menu__small');
+
+        const menuBtnClose = document.querySelector('.button__menuClose i');
+
+        menuBtn.addEventListener('click', () => {
+            menuBox.style.setProperty('--menu--display', 'block');
+        });
+
+        menuBtnClose.addEventListener('click', () => {
+            menuBox.style.setProperty('--menu--display', 'none');
+        });
     }
 }
 customElements.define('nav-bar', NavigationBar);
@@ -293,7 +347,7 @@ class MovieTrailer extends HTMLElement {
     constructor(video) {
         super();
         const trailer_key = video[0].key;
-        this.setAttribute('class', 'trailer__container')
+        this.setAttribute('class', 'trailer__container');
         this.innerHTML = `
             <div class='trailer__wrapper'>
                 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/${trailer_key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="video"></iframe>
