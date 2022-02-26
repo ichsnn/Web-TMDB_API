@@ -4,38 +4,20 @@ const movieID = params.get('id');
 
 const FACE_URL = 'https://www.themoviedb.org/t/p/w276_and_h350_face/';
 
-// Eksekusi Disini
+// EKSEKUSI DISINI
 if (movieID != null) {
     document.addEventListener('DOMContentLoaded', () => {
         const detailSection = document.getElementById('detailSection');
-        // Promise.resolve()
-        //     .then(movieDetails(MOVIE_URL(movieID), detailSection))
-        //     .then(movieCredits(CREADIT_URL(movieID), detailSection))
-        //     .then(movieReview(REVIEW_URL(movieID)))
-        //     .then(movieRecomendation(RECOM_URL(movieID)))
-        //     .then(() => {
-        //         getMovies(VIDEO_URL(movieID)).then((video) => {
-        //             const results = video.results;
-        //             const movieTrailer = new MovieTrailer(results)
-        //             detailSection.appendChild(movieTrailer)
-        //         });
-        //     })
-        movieDetails(MOVIE_URL(movieID), detailSection).then(tester);
-        // movieCredits(CREADIT_URL(movieID), detailSection);
-        // movieReview(REVIEW_URL(movieID));
-        // movieRecomendation(RECOM_URL(movieID));
-        // getMovies(VIDEO_URL(movieID)).then((video) => {
-        //     const results = video.results;
-        //     const movieTrailer = new MovieTrailer(results);
-        //     detailSection.appendChild(movieTrailer);
-        // });
 
-        // ASYNC OY
+        movieDetails(MOVIE_URL(movieID), detailSection)
+            .then(movieCredits(CREADIT_URL(movieID), detailSection))
+            .then(movieReview(REVIEW_URL(movieID)))
+            .then(movieRecomendation(RECOM_URL(movieID))).then(movieTrailer(VIDEO_URL(movieID), detailSection));
     });
 }
+// 
 
 const tester = async () => {
-    console.log(document.getElementById('detailSection'));
 };
 
 // Method lain
@@ -58,7 +40,6 @@ const VIDEO_URL = (movieID) => {
 
 const movieDetails = async (URL, container) => {
     const movie = await getMovies(URL);
-    console.log('details');
     window.document.title += ' - ' + movie.title;
     const detailsHero = new HeroMovieDetails(movie);
     container.appendChild(detailsHero);
@@ -67,7 +48,6 @@ const movieDetails = async (URL, container) => {
 const movieCredits = async (URL, container) => {
     const credit = await getMovies(URL);
     const data = credit;
-    console.log('credits');
     container.querySelector('.director__name').textContent = getJob(
         data.crew,
         'Director'
@@ -95,7 +75,6 @@ const movieCredits = async (URL, container) => {
 const movieReview = async (URL) => {
     const review = await getMovies(URL);
     const review_1 = review.results;
-    console.log('review');
     const reviewContainer = document.querySelector('.review__box');
     if (review_1.length < 1) {
         reviewContainer.innerHTML = '<div>No Review Yet!</div>';
@@ -115,7 +94,6 @@ const movieReview = async (URL) => {
 const movieRecomendation = async (URL) => {
     const review = await getMovies(URL);
     const movie = review.results;
-    console.log('recomendation');
     if (movie.length != 0) {
         displayRecom(movie);
     } else {
@@ -126,6 +104,29 @@ const movieRecomendation = async (URL) => {
             });
     }
 };
+
+const movieTrailer = async (URL, container) => {
+    await getMovies(URL).then((video) => {
+        const results = video.results;
+        const movieTrailer = new MovieTrailer(results);
+        container.appendChild(movieTrailer);
+    });
+    
+    //Open Trailer
+    const trailerTrigger = document.querySelector('.poster');
+    trailerTrigger.addEventListener('click', () => {
+        trailerModal.style.setProperty(`--trailer--display`, 'flex')
+    })
+    
+    // Close Trailer
+    const trailerModal = document.querySelector('.trailer__container');
+
+    trailerModal.addEventListener('click', () => {
+        trailerModal.style.setProperty(`--trailer--display`, 'none')
+    })
+};
+
+
 
 const displayRecom = (func) => {
     const recomContainer = document.querySelector('.recom__container');
