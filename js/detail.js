@@ -17,26 +17,8 @@ if (movieID != null) {
 }
 // 
 
-const tester = async () => {
-};
 
 // Method lain
-
-const CREADIT_URL = (movieID) => {
-    return `https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=${API_KEY}`;
-};
-
-const REVIEW_URL = (movieID) => {
-    return `https://api.themoviedb.org/3/movie/${movieID}/reviews?api_key=${API_KEY}`;
-};
-
-const RECOM_URL = (movieID) => {
-    return `https://api.themoviedb.org/3/movie/${movieID}/recommendations?api_key=${API_KEY}`;
-};
-
-const VIDEO_URL = (movieID) => {
-    return `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=${API_KEY}`;
-};
 
 const movieDetails = async (URL, container) => {
     const movie = await getMovies(URL);

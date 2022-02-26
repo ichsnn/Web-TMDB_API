@@ -1,7 +1,3 @@
-const SEARCH_URL = (search, page) => {
-    return `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${search}&page=${page}&include_adult=false&region=asa`;
-};
-
 const searchParams = new URLSearchParams(window.location.search);
 
 if (searchParams.has('search')) {
