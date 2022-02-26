@@ -130,10 +130,10 @@ class HeroMovieDetails extends HTMLElement {
                                 </div>
                                 <div class="header__info">
                                     ${movie.release_date} ${
-            movie.production_countries.length == 0
-                ? ''
-                : '(' + movie.production_countries[0].iso_3166_1 + ')'
-        } • ${genre} • ${movie.runtime}m
+                                        movie.production_countries.length == 0
+                                            ? ''
+                                            : '(' + movie.production_countries[0].iso_3166_1 + ')'
+                                    } • ${genre} • ${movie.runtime}m
                                 </div>
                             </div>
                             <div class="rating">
@@ -178,6 +178,32 @@ class HeroMovieDetails extends HTMLElement {
                     </div>
                 </div>
             </div>
+            <div class="detail__explore__wrapper">
+            <div class="credits">
+                <div class="cast">
+                    <div class="header">Top Cast</div>
+                    <div class="cast__contain">
+                        <div class="cast__container"></div>
+                    </div>
+                </div>
+                <div id="review">
+                    <div class="header">
+                        Review
+                    </div>
+                    <div class="review__box">
+                    </div>
+                </div>
+            </div>
+            <div class="explore">
+                <div class="recomendationSection">
+                    <div class="header">
+                        Recomendations
+                    </div>
+                    <div class="recom__container">
+                    </div>
+                </div>
+            </div>
+        </div>
         `;
     }
 }
@@ -213,7 +239,7 @@ class MovieCastCard extends HTMLElement {
         super();
         this.setAttribute('class', 'cast__card');
         this.innerHTML = `
-            <img src="https://www.themoviedb.org/t/p/w276_and_h350_face/${img}"
+            <img src="${img}"
                 alt="cast" class="cast__img">
             <div class="cast__info">
                 <div class="cast__name">
@@ -239,7 +265,7 @@ class ReviewCard extends HTMLElement {
                 ? 'assets/image/blank-avatar.png'
                 : review.author_details.avatar_path.substring(1);
 
-        const rating = review.author_details.rating;                
+        const rating = review.author_details.rating;
 
         this.innerHTML = `
         
@@ -250,7 +276,7 @@ class ReviewCard extends HTMLElement {
                     </div>
                     <div class="rating__label">
                         <i class="fa-solid fa-star star"></i>
-                        ${rating == null ? "none" : rating}
+                        ${rating == null ? 'none' : rating}
                     </div>
                 </div>
                 <div class="review__content">

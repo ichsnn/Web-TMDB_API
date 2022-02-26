@@ -2,59 +2,19 @@ const params = new URLSearchParams(window.location.search);
 
 const movieID = params.get('id');
 
+const FACE_URL = 'https://www.themoviedb.org/t/p/w276_and_h350_face/';
+
 // Eksekusi Disini
 if (movieID != null) {
     document.addEventListener('DOMContentLoaded', () => {
         const detailSection = document.getElementById('detailSection');
-        movieDetails(URL(movieID), CREADIT_URL(movieID), detailSection);
+        Promise.resolve()
+            .then(movieDetails(URL(movieID), detailSection))
+            .then(movieCredits(CREADIT_URL(movieID), detailSection))
+            .then(movieReview(REVIEW_URL(movieID)))
+            .then(movieRecomendation(RECOM_URL(movieID)));
     });
 }
-
-// Controll
-const movieDetails = (URL, CREDIT_URL, container) => {
-    // movie detail
-    getMovies(URL).then((movie) => {
-        window.document.title += ' - ' + movie.title;
-        const detailsHero = new HeroMovieDetails(movie);
-        container.appendChild(detailsHero);
-    });
-
-    // Add Credit
-    movieCredits(CREDIT_URL).then((data) => {
-        container.querySelector('.director__name').textContent = getJob(
-            data.crew,
-            'Director'
-        ).name;
-
-        const cast = data.cast;
-        const castContainer = document.querySelector('.cast__container');
-        for (let i = 0; i < 10; i++) {
-            const castCard = new MovieCastCard(
-                cast[i].profile_path,
-                cast[i].name,
-                cast[i].character
-            );
-            castContainer.appendChild(castCard);
-        }
-    });
-
-    movieReview(REVIEW_URL(movieID)).then((review) => {
-        const reviewContainer = document.querySelector('.review__box');
-        if (review.length < 1) {
-            reviewContainer.innerHTML = '<div>No Review Yet!</div>';
-        } else {
-            let i = 0;
-            review.every((data) => {
-                const reviewCard = new ReviewCard(data);
-                reviewContainer.appendChild(reviewCard);
-                i++;
-                if (i > 2) {
-                    return false;
-                } else return true;
-            });
-        }
-    });
-};
 
 // Method lain
 
@@ -67,21 +27,82 @@ const REVIEW_URL = (movieID) => {
 };
 
 const RECOM_URL = (movieID) => {
-    return `https://api.themoviedb.org/3/movie/${movieID}/recommendations?api_key=${API_KEY}`
-}
+    return `https://api.themoviedb.org/3/movie/${movieID}/recommendations?api_key=${API_KEY}`;
+};
 
 // ---------------
 
-const movieCredits = (URL) => {
-    return getMovies(URL).then((credit) => credit);
+const movieDetails = (URL, container) => {
+    getMovies(URL).then((movie) => {
+        window.document.title += ' - ' + movie.title;
+        const detailsHero = new HeroMovieDetails(movie);
+        container.appendChild(detailsHero);
+    });
+};
+
+const movieCredits = (URL, container) => {
+    return getMovies(URL)
+        .then((credit) => credit)
+        .then((data) => {
+            container.querySelector('.director__name').textContent = getJob(
+                data.crew,
+                'Director'
+            ).name;
+            const cast = data.cast;
+            const castContainer = document.querySelector('.cast__container');
+            let i = 0;
+            cast.every((people) => {
+                const castCard = new MovieCastCard(
+                    people.profile_path == null
+                        ? 'assets/image/blank-avatar.png'
+                        : FACE_URL + people.profile_path,
+                    people.name,
+                    people.character
+                );
+                castContainer.appendChild(castCard);
+                i++;
+                if (i > 9) {
+                    return false;
+                }
+                return true;
+            });
+        });
 };
 
 const movieReview = (URL) => {
-    return getMovies(URL).then((review) => review.results);
+    getMovies(URL)
+        .then((review) => review.results)
+        .then((review) => {
+            const reviewContainer = document.querySelector('.review__box');
+            if (review.length < 1) {
+                reviewContainer.innerHTML = '<div>No Review Yet!</div>';
+            } else {
+                let i = 0;
+                review.every((data) => {
+                    const reviewCard = new ReviewCard(data);
+                    reviewContainer.appendChild(reviewCard);
+                    i++;
+                    if (i > 2) {
+                        return false;
+                    } else return true;
+                });
+            }
+        });
 };
 
 const movieRecomendation = (URL) => {
-    return getMovies(URL).then((review) => review.results);
+    getMovies(URL)
+        .then((review) => review.results)
+        .then((movie) => {
+            let i = 0;
+            movie.every((recom) => {
+                console.log(recom.title);
+                if (i > 9) {
+                    return false;
+                }
+                return true;
+            });
+        });
 };
 
 const getJob = (arr, job) => {

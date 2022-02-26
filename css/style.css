@@ -159,6 +159,10 @@ main {
         min-width: 145px;
         max-width: 145px;
     }
+
+    .movieSection__container {
+        gap: 20px;
+    }
 }
 
 .movie__card .image {
