@@ -38,7 +38,7 @@ class NavigationBar extends HTMLElement {
                             <i class="fa-solid fa-xmark"></i>
                         </div>
                         <div class="search">
-                            <form action="/movie.html" class="search__form">
+                            <form action="movie.html" class="search__form">
                                 <input type="text" placeholder="Search Movies..." name="search">
                                 <button type="submit" class="button__search item__menu">
                                     <i class="fa fa-search"></i>
