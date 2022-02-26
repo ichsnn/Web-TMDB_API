@@ -5,7 +5,7 @@ if (searchParams.has('search')) {
     let page = 1;
     var totalPage = 0;
     var totalResults = 0;
-    const tag = params.keys().next().value;
+    const tag = searchValue;
     document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('movie-container');
         const sectionHeader = document.querySelector(
