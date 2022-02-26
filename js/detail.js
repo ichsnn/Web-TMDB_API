@@ -12,11 +12,11 @@ if (movieID != null) {
         movieDetails(MOVIE_URL(movieID), detailSection)
             .then(movieCredits(CREADIT_URL(movieID), detailSection))
             .then(movieReview(REVIEW_URL(movieID)))
-            .then(movieRecomendation(RECOM_URL(movieID))).then(movieTrailer(VIDEO_URL(movieID), detailSection));
+            .then(movieRecomendation(RECOM_URL(movieID)))
+            .then(movieTrailer(VIDEO_URL(movieID), detailSection));
     });
 }
-// 
-
+//
 
 // Method lain
 
@@ -92,23 +92,20 @@ const movieTrailer = async (URL, container) => {
         const results = video.results;
         const movieTrailer = new MovieTrailer(results);
         container.appendChild(movieTrailer);
+        //Open Trailer
+        const trailerTrigger = document.querySelector('.poster');
+        trailerTrigger.addEventListener('click', () => {
+            trailerModal.style.setProperty(`--trailer--display`, 'flex');
+        });
+
+        // Close Trailer
+        const trailerModal = document.querySelector('.trailer__container');
+
+        trailerModal.addEventListener('click', () => {
+            trailerModal.style.setProperty(`--trailer--display`, 'none');
+        });
     });
-    
-    //Open Trailer
-    const trailerTrigger = document.querySelector('.poster');
-    trailerTrigger.addEventListener('click', () => {
-        trailerModal.style.setProperty(`--trailer--display`, 'flex')
-    })
-    
-    // Close Trailer
-    const trailerModal = document.querySelector('.trailer__container');
-
-    trailerModal.addEventListener('click', () => {
-        trailerModal.style.setProperty(`--trailer--display`, 'none')
-    })
 };
-
-
 
 const displayRecom = (func) => {
     const recomContainer = document.querySelector('.recom__container');
