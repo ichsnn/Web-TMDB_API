@@ -28,7 +28,9 @@ class MovieCard extends HTMLElement {
 
         this.setAttribute('title', movie.title);
         this.innerHTML = `
-            <img src="https://image.tmdb.org/t/p/w342${movie.poster_path}" alt="${movie.title}"
+            <img src="https://image.tmdb.org/t/p/w342${
+                movie.poster_path
+            }" alt="${movie.title}"
             class="image">
             <div class="card__details">
                 <div class="info">
@@ -129,10 +131,10 @@ class HeroMovieDetails extends HTMLElement {
                                 </div>
                                 <div class="header__info">
                                     ${movie.release_date} ${
-                                        movie.production_countries.length == 0
-                                            ? ''
-                                            : '(' + movie.production_countries[0].iso_3166_1 + ')'
-                                    } • ${genre} • ${movie.runtime}m
+            movie.production_countries.length == 0
+                ? ''
+                : '(' + movie.production_countries[0].iso_3166_1 + ')'
+        } • ${genre} • ${movie.runtime}m
                                 </div>
                             </div>
                             <div class="rating">
@@ -286,6 +288,20 @@ class ReviewCard extends HTMLElement {
     }
 }
 customElements.define('review-card', ReviewCard);
+
+class MovieTrailer extends HTMLElement {
+    constructor(video) {
+        super();
+        const trailer_key = video[0].key;
+        this.setAttribute('class', 'trailer__container')
+        this.innerHTML = `
+            <div class='trailer__wrapper'>
+                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/${trailer_key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="video"></iframe>
+            </div>
+        `;
+    }
+}
+customElements.define('movie-trailer', MovieTrailer);
 
 class MyFooter extends HTMLElement {
     constructor() {
