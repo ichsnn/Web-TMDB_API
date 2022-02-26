@@ -20,7 +20,7 @@ class NavigationBar extends HTMLElement {
                             <a href="category.html" class="item__menu">Category</a>
                         </div>
                     </div>
-                    <form action="/movie.html" class="search__form">
+                    <form action="movie.html" class="search__form">
                         <input type="text" placeholder="Search Movies..." name="search">
                         <button type="submit" class="button__search item__menu">
                             <i class="fa fa-search"></i>
