@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: #eeedde;
 }
 
@@ -104,7 +103,7 @@ nav {
     gap: 20px;
 }
 
-.menu__small input[type=text]{
+.menu__small input[type='text'] {
     width: 100%;
 }
 
@@ -122,6 +121,42 @@ nav {
     }
 }
 
+.hero__section {
+    position: relative;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-position: right -200px top;
+    background-image: url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/iQFcwSGbZXMkeyKrxbPnwnRo5fl.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero__section::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom right,
+        rgb(11, 48, 51),
+        rgba(10.5, 31.5, 52.5, 0.84)
+    );
+}
+
+.hero__section > div {
+    width: 100%;
+    max-width: 1280px;
+    margin: auto;
+    padding: 20px;
+    z-index: 20;
+}
+
+.hero__section h1 {
+    font-size: 56px;
+}
+
 .nav__logo {
     font-size: 48px;
     font-weight: bold;
@@ -132,7 +167,7 @@ nav {
 
 .nav__item {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 600;
     display: flex;
     align-items: center;
     gap: 16px;
@@ -153,7 +188,7 @@ nav {
     gap: 12px;
 }
 
-.search__form input[type=text] {
+.search__form input[type='text'] {
     font-size: 18px;
     padding: 6px 8px;
     background-color: #203346;
@@ -175,12 +210,10 @@ nav {
     border: none;
 }
 
-.button__search i{
+.button__search i {
     font-size: 24px;
     color: #31728a;
 }
-
-
 
 /* !navbar */
 
@@ -274,7 +307,7 @@ main {
     background-color: #141e27;
     min-width: 200px;
     max-width: 200px;
-    font-weight: 700;
+    font-weight: 600;
     display: flex;
     flex-direction: column;
     border-radius: 12px;
@@ -428,7 +461,7 @@ main {
 }
 
 .trailer__wrapper .video {
-    display: block; 
+    display: block;
     width: 100%;
     height: 100%;
 }
@@ -787,7 +820,6 @@ main {
     min-width: 200px;
     max-width: 200px;
 }
-
 
 /* SCROLLBAR */
 ::-webkit-scrollbar {

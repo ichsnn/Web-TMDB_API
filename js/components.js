@@ -73,6 +73,26 @@ class NavigationBar extends HTMLElement {
 }
 customElements.define('nav-bar', NavigationBar);
 
+class LandingHero extends HTMLElement {
+    constructor() {
+        super();
+        this.setAttribute('class', 'hero__section');
+        this.innerHTML = `
+            <div>
+                <div>
+                    <h1>
+                        Welcome.
+                    </h1>
+                    <h2>
+                        Looking for Movies to Watch ? Explore Now.
+                    </h2>
+                </div>
+            </div>
+        `;
+    }
+}
+customElements.define('hero-section', LandingHero);
+
 class MovieCard extends HTMLElement {
     constructor(movie) {
         super();
