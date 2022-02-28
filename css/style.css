@@ -626,7 +626,12 @@ main {
 }
 
 .credits {
+    flex: 5;
     overflow: hidden;
+}
+
+.explore {
+    flex: 1;
 }
 
 @media screen and (max-width: 767px) {

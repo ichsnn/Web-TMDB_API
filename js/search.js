@@ -14,12 +14,11 @@ if (searchParams.has('search')) {
 
         const moreButton = document.querySelector('.btn__more');
 
-        if(totalResults == 0) {
-            moreButton.style.setProperty('--more--display', 'none');
-        }
-
         getSearchInfo().then(() => {
             sectionHeader.textContent = `${tag} (${totalResults})`;
+            if(totalResults == 0) {
+                moreButton.style.setProperty('--more--display', 'none');
+            }
             moreButton.addEventListener('click', () => {
                 page += 1;
                 showMovies(container);
