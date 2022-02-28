@@ -28,7 +28,7 @@ if (searchParams.has('search')) {
     });
 
     const getSearchInfo = async () => {
-        return getMovies(SEARCH_URL(page)).then((movie) => {
+        return await getMovies(SEARCH_URL(searchValue, page)).then((movie) => {
             totalResults = movie.total_results;
             totalPage = movie.total_pages;
         });
