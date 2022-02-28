@@ -79,11 +79,9 @@ const movieRecomendation = async (URL) => {
     if (movie.length != 0) {
         displayRecom(movie);
     } else {
-        getMovies(MOVIE_URL('now_playing'))
-            .then((movie_1) => movie_1.results)
-            .then((results) => {
-                displayRecom(results);
-            });
+        const recom = await getMovies(MOVIE_URL('now_playing'));
+        const results = recom.results;
+        displayRecom(results);
     }
 };
 
