@@ -1,3 +1,4 @@
+// Original Created By - Ichsan N
 const updateContainer = (root) => {
     const movieContainer = root.querySelector('.movie__container');
     const prev = movieContainer.querySelector('.scroll__button .prev');
