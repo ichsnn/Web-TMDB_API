@@ -77,11 +77,11 @@ const movieRecomendation = async (URL) => {
     const review = await getMovies(URL);
     const movie = review.results;
     if (movie.length != 0) {
-        displayRecom(movie);
+        await displayRecom(movie);
     } else {
         const recom = await getMovies(MOVIE_URL('now_playing'));
         const results = recom.results;
-        displayRecom(results);
+        await displayRecom(results);
     }
 };
 
@@ -105,7 +105,7 @@ const movieTrailer = async (URL, container) => {
     });
 };
 
-const displayRecom = (func) => {
+const displayRecom = async (func) => {
     const recomContainer = document.querySelector('.recom__container');
     let i = 0;
     func.every((recom) => {
